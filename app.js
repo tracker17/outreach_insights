@@ -3,8 +3,8 @@ const createCSVFile = require("./createCSV.js");
 const GetInsights = require("./GetInsights.js");
 const reduceContent = require("./reduceContent.js");
 
-const dateStr1 = "2023-07-31";
-const dateStr2 = "2023-07-31";
+const dateStr1 = "2023-08-21";
+const dateStr2 = "2023-08-21";
 const campaign_id = "191";
 
 const StartTime = convertDateTimeToESTEpoch(dateStr1, "00:01:00");
@@ -24,6 +24,7 @@ async function test() {
     console.log(`This will run ${GetInsights_resp.page} times, Have patience`);
     for (let i = 2; i <= GetInsights_resp.page; i++) {
       GetInsights_resp = await GetInsights(i, StartTime, EndTime, campaign_id);
+      console.log(`${i} times finished`);
       if (GetInsights_resp === "failed") {
         console.log("\n GetInsights failed");
         return false;
